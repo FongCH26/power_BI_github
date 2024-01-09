@@ -1,0 +1,9 @@
+{
+  "version": "1.0",
+  "datasetReference": {
+    "byPath": {
+      "path": "../power_BI_git.Dataset"
+    },
+    "byConnection": null
+  }
+}
