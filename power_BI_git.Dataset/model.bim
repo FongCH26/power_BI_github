@@ -9,6 +9,14 @@
       {
         "name": "PBIDesktopVersion",
         "value": "2.123.742.0 (23.11)"
+      },
+      {
+        "name": "PBI_QueryOrder",
+        "value": "[\"transform\"]"
+      },
+      {
+        "name": "__PBI_TimeIntelligenceEnabled",
+        "value": "1"
       }
     ],
     "culture": "en-US",
@@ -23,6 +31,187 @@
           },
           "contentType": "json"
         }
+      }
+    ],
+    "dataAccessOptions": {
+      "legacyRedirects": true,
+      "returnErrorValuesAsNull": true
+    },
+    "defaultPowerBIDataSourceVersion": "powerBI_V3",
+    "sourceQueryCulture": "en-US",
+    "tables": [
+      {
+        "name": "transform",
+        "columns": [
+          {
+            "name": "store",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "474eb727-10fe-4031-8c86-416ad6b379cd",
+            "sourceColumn": "store",
+            "sourceProviderType": "nvarchar(16384)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "order_date",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "UnderlyingDateTimeDataType",
+                "value": "Date"
+              }
+            ],
+            "dataType": "dateTime",
+            "formatString": "Long Date",
+            "lineageTag": "bf39521f-fbbb-46f8-bd6b-71a6be953885",
+            "sourceColumn": "order_date",
+            "sourceProviderType": "date",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "order_id",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "5071fda4-283e-4c24-bd20-ea0b43300c9a",
+            "sourceColumn": "order_id",
+            "sourceProviderType": "nvarchar(16384)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "customer_id",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "d8a0a1b2-a1d9-4107-adca-7507b2d39499",
+            "sourceColumn": "customer_id",
+            "sourceProviderType": "nvarchar(16384)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "product_id",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "3d6a8775-f3e7-4c89-adc3-9a630a1d2eaa",
+            "sourceColumn": "product_id",
+            "sourceProviderType": "nvarchar(16384)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "category",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "0e7a94dc-2c4a-447d-a18b-f9489f4a6aad",
+            "sourceColumn": "category",
+            "sourceProviderType": "nvarchar(16384)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "product_name",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "6f3fe22d-c7ad-48c6-9ce0-7328f32ec803",
+            "sourceColumn": "product_name",
+            "sourceProviderType": "nvarchar(16384)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "price",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "double",
+            "lineageTag": "56087b10-d77a-4ad1-9d51-820320cd9b5e",
+            "sourceColumn": "price",
+            "sourceProviderType": "double",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "country",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "da4bf288-c84a-4e57-8254-6d7cebba2792",
+            "sourceColumn": "country",
+            "sourceProviderType": "nvarchar(16384)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "continents",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "9d1b1ac3-2d2e-46d5-8e69-2ad711337319",
+            "sourceColumn": "continents",
+            "sourceProviderType": "nvarchar(16384)",
+            "summarizeBy": "none"
+          }
+        ],
+        "lineageTag": "b883b5f8-9aa5-43a6-9d01-7d4b29bf8954",
+        "partitions": [
+          {
+            "name": "transform",
+            "mode": "directQuery",
+            "source": {
+              "expression": [
+                "let",
+                "    Source = GoogleBigQuery.Database(),",
+                "    #\"data-marts-396708\" = Source{[Name=\"data-marts-396708\"]}[Data],",
+                "    target_data_Schema = #\"data-marts-396708\"{[Name=\"target_data\",Kind=\"Schema\"]}[Data],",
+                "    transform_Table = target_data_Schema{[Name=\"transform\",Kind=\"Table\"]}[Data]",
+                "in",
+                "    transform_Table"
+              ],
+              "type": "m"
+            }
+          }
+        ]
       }
     ]
   }
